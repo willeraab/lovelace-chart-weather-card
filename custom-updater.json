@@ -1,9 +1,9 @@
 {
-    "custom-weather-card-chart": {
-      "updated_at": "2019-01-24",
-      "version": "0.2.4",
-      "remote_location": "https://raw.githubusercontent.com/sgttrs/lovelace-weather-card-chart/master/custom-weather-card-chart.js",
-      "visit_repo": "https://github.com/sgttrs/lovelace-weather-card-chart",
-      "changelog": "https://github.com/sgttrs/lovelace-weather-card-chart/releases/latest"
+    "custom-chart-weather-card": {
+      "updated_at": "2019-06-28",
+      "version": "0.1.0",
+      "remote_location": "https://raw.githubusercontent.com/willeraab/lovelace-chart-weather-card/master/custom-chart-weather-card.js",
+      "visit_repo": "https://github.com/willeraab/lovelace-chart-weather-card",
+      "changelog": "https://github.com/willeraab/lovelace-chart-weather-card/releases/latest"
     }
 }
