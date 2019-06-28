@@ -112,6 +112,12 @@ class WeatherCardChart extends Polymer.Element {
         .main sup {
           font-size: 32px;
         }
+        .main .temp {
+          font-size: 52px;
+          line-height: 1em;
+          position: relative;
+          font-weight: 400;
+        }
         .attributes {
           cursor: pointer;
           display: flex;
@@ -156,10 +162,10 @@ class WeatherCardChart extends Polymer.Element {
           	<div class="icon">
             <ha-icon icon="[[getWeatherIcon(weatherObj.state)]]"></ha-icon>
             <template is="dom-if" if="[[tempObj]]">
-              <div on-click="_tempAttr">[[roundNumber(tempObj.state)]]<sup>[[getUnit('temperature')]]</sup></div>
+	              <div class="temp" on-click="_tempAttr">[[roundNumber(tempObj.state)]]<sup>[[getUnit('temperature')]]</sup></div>
             </template>
             <template is="dom-if" if="[[!tempObj]]">
-              <div on-click="_weatherAttr">[[roundNumber(weatherObj.attributes.temperature)]]<sup>[[getUnit('temperature')]]</sup></div>
+	              <div class="temp" on-click="_weatherAttr">[[roundNumber(weatherObj.attributes.temperature)]]<sup>[[getUnit('temperature')]]</sup></div>
             </template>
           </div>
             <div class="statename">
@@ -452,6 +458,9 @@ class WeatherCardChart extends Polymer.Element {
             ticks: {
               display: true,
               fontColor: textColor,
+              callback: function(value, index, values) {
+              	return value + '°';
+              }
             },
             afterFit: function(scaleInstance) {
               scaleInstance.width = 28;
