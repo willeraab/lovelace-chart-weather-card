@@ -78,6 +78,9 @@ class WeatherCardChart extends Polymer.Element {
   static get template() {
     return Polymer.html`
       <style>
+        ha-card {
+          padding: 16px 0 0 0;
+        }
         ha-icon {
           color: var(--paper-item-icon-color);
         }
@@ -90,15 +93,21 @@ class WeatherCardChart extends Polymer.Element {
           font-size: 60px;
           font-weight: 350;
           margin-top: -10px;
+          justify-content: space-between;
         }
         .main ha-icon {
           --iron-icon-height: 74px;
           --iron-icon-width: 74px;
           margin-right: 20px;
         }
-        .main div {
+        .main > div {
           cursor: pointer;
           margin-top: -11px;
+        }
+        .main .icon {
+          display: flex;
+          align-items: center;
+          margin-top: 0;
         }
         .main sup {
           font-size: 32px;
@@ -111,7 +120,7 @@ class WeatherCardChart extends Polymer.Element {
           margin: 10px 0px 10px 0px;
         }
         .attributes div {
-          text-align: center;
+          text-align: left;
         }
         .conditions {
           display: flex;
@@ -123,8 +132,25 @@ class WeatherCardChart extends Polymer.Element {
         	display: none !important;
         }
         .statename {
+          font-family: var(--paper-font-headline_-_font-family);
+          -webkit-font-smoothing: var( --paper-font-headline_-_-webkit-font-smoothing );
+          font-size: var(--paper-font-headline_-_font-size);
+          font-weight: var(--paper-font-headline_-_font-weight);
+          letter-spacing: var(--paper-font-headline_-_letter-spacing);
+          line-height: 1em;
+          text-rendering: var( --paper-font-common-expensive-kerning_-_text-rendering );
+          opacity: var(--dark-primary-opacity);
+          display: block;
+          align-items: baseline;
+          justify-content: space-between;
+          text-align: right;
+        }
+        .statename span {
+          font-size: 16px;
+          color: var(--secondary-text-color);
+        }
       </style>
-      <ha-card header="[[title]]">
+      <ha-card>
         <div class="card">
           <div class="main" hidden="[[chartOnly]]">
           	<div class="icon">
@@ -136,6 +162,10 @@ class WeatherCardChart extends Polymer.Element {
               <div on-click="_weatherAttr">[[roundNumber(weatherObj.attributes.temperature)]]<sup>[[getUnit('temperature')]]</sup></div>
             </template>
           </div>
+            <div class="statename">
+            	<span>[[title]]<br></span>
+            	[[getWeatherState(weatherObj.state)]]
+            </div>
           </div>
           <div class="attributes" on-click="_weatherAttr" hidden="[[chartOnly]]">
             <div>
@@ -271,6 +301,11 @@ class WeatherCardChart extends Polymer.Element {
 
   getWeatherIcon(condition) {
     return this.weatherIcons[condition];
+  }
+
+  getWeatherState(condition)
+  {
+  	return this._hass.localize('state.weather.' + condition) || condition;
   }
 
   getWindDirIcon(degree) {
