@@ -29,7 +29,7 @@ You can update this card using [custom updater](https://github.com/custom-compon
 # Example configuration.yaml entry
 custom_updater:
   card_urls:
-    - https://github.com/willeraab/lovelace-chart-weather-card/blob/master/custom-updater.json
+    - https://raw.githubusercontent.com/willeraab/lovelace-chart-weather-card/master/custom-updater.json
 ```
 
 #### Configuration variables:
