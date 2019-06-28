@@ -1,6 +1,10 @@
 # Weather card
 
-![openweathermap-eng](https://user-images.githubusercontent.com/33804747/50649716-d987f880-0fa8-11e9-9608-93aa8b2857f4.png)
+![custom-weather-card](https://user-images.githubusercontent.com/1109836/60332830-e6096e80-9997-11e9-9527-16b424e1984c.png)
+
+## About
+
+This is a fork from a [very nice weather card](https://github.com/sgttrs/lovelace-weather-card-chart) that I wanted to tweak and adapt a bit. Since the changes are quite extensive and I also do alter stuff to personal taste, I've chosen (for now) to keep this in a separate repo.
 
 ## Configuration
 
@@ -25,15 +29,17 @@ You can update this card using [custom updater](https://github.com/custom-compon
 # Example configuration.yaml entry
 custom_updater:
   card_urls:
-    - https://raw.githubusercontent.com/sgttrs/lovelace-weather-card-chart/master/custom-updater.json
+    - https://github.com/willeraab/lovelace-weather-card-chart/blob/master/custom-updater.json
 ```
 
 #### Configuration variables:
 
 | Name    | Optional | Description                                                                                        |
 | ------- | -------- | -------------------------------------------------------------------------------------------------- |
-| type    | **No**   | Should be `'custom:weather-card-chart'`                                                            |
-| title   | **No**   | Card title                                                                                         |
-| weather | **No**   | An entity_id with the `weather` domain                                                             |
-| temp    | Yes      | Entity_id of the temperature sensor. Show temperature value from sensor instead                    |
-| mode    | Yes      | Default value: `daily`. Set mode to `hourly` to display hours instead weekdays on the chart        |
+| type    | **No**   | Should be `'custom:weather-card-chart'`. |
+| weather | **No**   | An entity_id with the `weather` domain. |
+| title   | Yes      | Card title, defaults to friendly_name if no title is set. |
+| temp    | Yes      | Entity_id of the temperature sensor. Show temperature value from sensor instead. |
+| mode    | Yes      | Default value: `daily`. Set mode to `hourly` to display hours instead weekdays on the chart. |
+| number_of_forecasts | Yes | Number of forecast recordings to show, min 3 max 9. |
+| chart_only | Yes | Display the chart without displaying the header information. Boolean. |
