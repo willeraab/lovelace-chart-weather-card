@@ -268,6 +268,7 @@ class WeatherCardChart extends Polymer.Element {
     this.tempObj = this.config.temp in hass.states ? hass.states[this.config.temp] : null;
     this.forecast = this.weatherObj.attributes.forecast.slice(0, this.numberOfForecasts);
     this.windBearing = this.weatherObj.attributes.wind_bearing;
+    this.title = this.title || this.weatherObj.attributes.friendly_name || '';
   }
 
   dataChanged() {
