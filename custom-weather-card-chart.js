@@ -119,6 +119,10 @@ class WeatherCardChart extends Polymer.Element {
           align-items: center;
           margin: 0px 3px 0px 16px;
         }
+        [hidden] {
+        	display: none !important;
+        }
+        .statename {
       </style>
       <ha-card header="[[title]]">
         <div class="card">
