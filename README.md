@@ -4,23 +4,23 @@
 
 ## About
 
-This is a fork from a [very nice weather card](https://github.com/sgttrs/lovelace-weather-card-chart) that I wanted to tweak and adapt a bit. Since the changes are quite extensive and I also do alter stuff to personal taste, I've chosen (for now) to keep this in a separate repo.
+This is a fork from a [very nice weather card](https://github.com/sgttrs/lovelace-weather-card-chart) that I wanted to tweak and adapt a bit. Since the changes are quite extensive and I also do alter stuff to personal taste, I've chosen (for now) to keep this in a separate repo. To not collide with the original I've renamed this card.
 
 ## Configuration
 
-Copy `custom-weather-card-chart.js` from this repository into your `config/www` directory first.
+Copy `custom-chart-weather-card.js` from this repository into your `config/www` directory first.
 
 Add a reference to the copied file:
 ```yaml
 # Example Lovelace UI config entry
 resources:
 - type: module
-  url: /local/custom-weather-card-chart.js
+  url: /local/custom-chart-weather-card.js
 ```
 Then you can add the card to the view:
 ```yaml
 # Example Lovelace UI config entry
-  - type: 'custom:weather-card-chart'
+  - type: 'custom:chart-weather-card'
     title: Weather
     weather: weather.openweathermap
 ```
@@ -29,14 +29,14 @@ You can update this card using [custom updater](https://github.com/custom-compon
 # Example configuration.yaml entry
 custom_updater:
   card_urls:
-    - https://github.com/willeraab/lovelace-weather-card-chart/blob/master/custom-updater.json
+    - https://github.com/willeraab/lovelace-chart-weather-card/blob/master/custom-updater.json
 ```
 
 #### Configuration variables:
 
 | Name    | Optional | Description                                                                                        |
 | ------- | -------- | -------------------------------------------------------------------------------------------------- |
-| type    | **No**   | Should be `'custom:weather-card-chart'`. |
+| type    | **No**   | Should be `'custom:chart-weather-card'`. |
 | weather | **No**   | An entity_id with the `weather` domain. |
 | title   | Yes      | Card title, defaults to friendly_name if no title is set. |
 | temp    | Yes      | Entity_id of the temperature sensor. Show temperature value from sensor instead. |
