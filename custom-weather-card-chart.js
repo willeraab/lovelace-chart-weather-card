@@ -132,6 +132,7 @@ class WeatherCardChart extends Polymer.Element {
               <div on-click="_weatherAttr">[[roundNumber(weatherObj.attributes.temperature)]]<sup>[[getUnit('temperature')]]</sup></div>
             </template>
           </div>
+          </div>
           <div class="attributes" on-click="_weatherAttr" hidden="[[chartOnly]]">
             <div>
               <ha-icon icon="hass:water-percent"></ha-icon> [[roundNumber(weatherObj.attributes.humidity)]] %<br>
