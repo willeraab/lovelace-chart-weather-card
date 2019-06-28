@@ -205,6 +205,13 @@ class WeatherCardChart extends Polymer.Element {
     this.weatherObj = config.weather;
     this.tempObj = config.temp;
     this.mode = config.mode;
+    this.numberOfForecasts = config.number_of_forecasts || 9;
+    if (this.numberOfForecasts > 9) {
+    	this.numberOfForecasts = 9;
+    }
+    if (this.numberOfForecasts < 3) {
+    	this.numberOfForecasts = 3;
+    }
     if (!config.weather) {
       throw new Error('Please define "weather" entity in the card config');
     }
@@ -216,7 +223,7 @@ class WeatherCardChart extends Polymer.Element {
     this.weatherObj = this.config.weather in hass.states ? hass.states[this.config.weather] : null;
     this.sunObj = 'sun.sun' in hass.states ? hass.states['sun.sun'] : null;
     this.tempObj = this.config.temp in hass.states ? hass.states[this.config.temp] : null;
-    this.forecast = this.weatherObj.attributes.forecast.slice(0,9);
+    this.forecast = this.weatherObj.attributes.forecast.slice(0, this.numberOfForecasts);
     this.windBearing = this.weatherObj.attributes.wind_bearing;
   }
 
@@ -270,7 +277,7 @@ class WeatherCardChart extends Polymer.Element {
   }
 
   drawChart() {
-    var data = this.weatherObj.attributes.forecast.slice(0,9);
+    var data = this.weatherObj.attributes.forecast.slice(0, this.numberOfForecasts);
     var locale = this._hass.selectedLanguage || this._hass.language;
     var tempUnit = this._hass.config.unit_system.temperature;
     var lengthUnit = this._hass.config.unit_system.length;
